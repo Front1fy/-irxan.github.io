@@ -142,6 +142,27 @@ body.dark .opening-hours{background:rgba(47,164,170,0.2); color:#fff;}
 .social-btn:hover{color:#1d7c80;}
 body.dark .social-btn{color:#fff;}
 body.dark .social-btn:hover{color:#ffd54f;}
+.menu-buttons{
+    max-width:360px;
+    margin:20px auto;
+}
+
+.social-card{
+    margin-top:12px;
+    animation:none;
+}
+
+.instagram{
+    background:linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);
+}
+
+.tiktok{
+    background:#111;
+}
+
+.social-card i{
+    margin-right:8px;
+}
 
 /* Kids Info Section */
 .kids-info{
@@ -238,6 +259,27 @@ body.dark .kids-info{
 <!-- MENYUYA KEÇİD -->
 <div class="menu-card" onclick="window.location.href='index(1).html'">
     <span>📖 Menyuya baxın</span><span>›</span>
+</div>
+<!-- MENYUYA KEÇİD -->
+<div class="menu-buttons">
+
+    <!-- MENYU -->
+    <div class="menu-card" onclick="window.location.href='index(1).html'">
+        <span>📖 Menyuya baxın</span><span>›</span>
+    </div>
+
+    <!-- INSTAGRAM -->
+    <div class="menu-card social-card instagram"
+         onclick="window.open('https://www.instagram.com/yuppiland.az?igsh=cWx6MnNnNjBwb2Qy&utm_source=qr','_blank')">
+        <span><i class="fab fa-instagram"></i> Instagram</span><span>›</span>
+    </div>
+
+    <!-- TIKTOK -->
+    <div class="menu-card social-card tiktok"
+         onclick="window.open('https://www.tiktok.com/@yuppiland.az/photo/7568465433993448726?_r=1&_t=ZN-93gyoVgwJM6','_blank')">
+        <span><i class="fab fa-tiktok"></i> TikTok</span><span>›</span>
+    </div>
+
 </div>
 
 <div class="opening-hours">
