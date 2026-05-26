@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YuppiLand</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{box-sizing:border-box;}
+body{margin:0;font-family:Arial,sans-serif;background:#f4fbff;color:#222;transition:.3s;}
+body.light{background:#f4fbff;color:#222;}
+body.dark{background:linear-gradient(135deg,#0a1a3b,#13264f,#1b3270,#1b3270);color:#fff;}
+
+/* HEADER */
+.header{background:#2fa4aa;height:120px;border-bottom-left-radius:60% 35px;border-bottom-right-radius:70% 35px;position:relative;}
+
+/* THEME TOGGLE */
+.theme-toggle{
+    position:absolute;
+    top:14px;
+    left:14px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:rgba(255,255,255,.25);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:.3s;
+}
+.theme-toggle i{
+    color:#fff;
+    font-size:18px;
+    transition:.3s;
+    position:absolute;
+}
+#moonIcon{display:none;}
+#sunIcon{display:none;}
+body.light #sunIcon{display:block;}
+body.light #moonIcon{display:none;}
+body.dark #moonIcon{display:block;}
+body.dark #sunIcon{display:none;}
+
+.logo {
+    width:100px;
+    height:100px;
+    background:#fff;
+    border-radius:50%;
+    position:absolute;
+    left:50%;
+    top:45px;
+    transform:translateX(-50%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+    overflow:hidden;
+}
+
+.logo img {
+    width:110%;
+    height:110%;
+    object-fit:cover;
+}
+
+/* CONTENT */
+.content{text-align:center;padding:15px;}
+h1{font-size:22px;margin-bottom:8px;color:inherit;}
+h1 span{font-weight:700;}
+
+/* RATING */
+.rating-container{margin:35px 0 20px;}
+.rating{margin:10px 0;}
+.star{
+    font-size:50px;
+    color:#ffc107;
+    cursor:pointer;
+    transition:.3s;
+    text-shadow:0 0 5px #ffc107,0 0 10px #ffc107,0 0 15px #ffc107;
+}
+.star:hover{color:#ffd700;text-shadow:0 0 5px #ffd700,0 0 10px #ffd700,0 0 15px #ffd700;}
+#ratingText{font-size:14px;color:inherit;margin:2px 0;}
+
+/* REVIEW BOX */
+.review-box{
+    display:none;
+    opacity:0;
+    transform:translateY(-20px);
+    transition:.4s ease;
+    margin-top:20px;
+    background:rgba(255,255,255,0.95);
+    padding:20px;
+    max-width:360px;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:15px;
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+    color:#000;
+}
+.review-box.show{
+    display:block;
+    opacity:1;
+    transform:translateY(0);
+}
+body.dark .review-box{background:rgba(30,30,30,0.95); color:#fff;}
+.review-box input, .review-box textarea{
+    width:100%; margin:10px 0; padding:12px; border-radius:10px; border:1px solid #ccc;
+}
+body.dark .review-box input, body.dark .review-box textarea{border:1px solid #555; background:#1e1e1e; color:#fff;}
+.review-box button{
+    width:100%; padding:12px; border:none; border-radius:10px; background:#2fa4aa; color:#fff; font-weight:bold; cursor:pointer; transition:.3s;
+}
+.review-box button:hover{background:#1d7c80;}
+#closeReview{cursor:pointer; font-weight:bold; font-size:18px; float:right; margin-bottom:10px;}
+
+/* MENU */
+.menu-card{background:#2fa4aa;color:#fff;max-width:360px;margin:20px auto;padding:18px;border-radius:12px;display:flex;justify-content:space-between;cursor:pointer;animation:pulse 1.4s infinite;}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+
+/* AÇILIŞ SAATLARI KONTEYNERİ */
+.opening-hours{
+    max-width:360px;
+    margin:15px auto;
+    padding:15px;
+    background:rgba(47,164,170,0.1);
+    border-radius:12px;
+    font-size:15px;
+    color:#222;
+}
+body.dark .opening-hours{background:rgba(47,164,170,0.2); color:#fff;}
+
+/* FOOTER */
+.footer{margin-top:15px;font-size:14px;color:inherit;text-align:center;}
+#message{margin-top:10px;font-weight:bold;color:#4caf50;}
+
+/* Sosial düymələr */
+.social-buttons{display:flex;justify-content:center;gap:20px;margin-top:10px;}
+.social-btn{font-size:28px;color:#2fa4aa;text-decoration:none;transition:.3s;}
+.social-btn:hover{color:#1d7c80;}
+body.dark .social-btn{color:#fff;}
+body.dark .social-btn:hover{color:#ffd54f;}
+
+/* Kids Info Section */
+.kids-info{
+    max-width:360px;
+    margin:25px auto;
+    padding:20px;
+    background:rgba(255,245,200,0.4);
+    border-radius:15px;
+    text-align:left;
+    color:#222;
+    font-size:14px;
+}
+.kids-info h2{
+    text-align:center;
+    margin-bottom:15px;
+    font-size:18px;
+}
+.kids-info ul{
+    padding-left:20px;
+    margin-bottom:10px;
+}
+.kids-info li{
+    margin:6px 0;
+}
+body.dark .kids-info{
+    background:rgba(255,200,50,0.2);
+    color:#fff;
+}
+
+/* BAYRAQ BUTTON */
+.lang-btn{
+    position:absolute;
+    top:14px;
+    right:14px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    overflow:hidden;
+    cursor:pointer;
+    border:2px solid #fff;
+}
+.lang-btn img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.lang-text{
+    text-align:center;
+    margin-top:5px;
+    font-size:14px;
+    font-weight:bold;
+    display:none;
+}
+</style>
+</head>
+
+<body>
+<div class="header">
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon" id="moonIcon"></i>
+        <i class="fas fa-sun" id="sunIcon"></i>
+    </div>
+    <!-- Azərbaycan bayrağı -->
+    <div class="lang-btn" id="langBtn">
+        <img src="ımg/azerbaycan-bayragi.webp" alt="AZ">
+    </div>
+</div>
+
+<div class="logo-wrap">
+    <div class="logo">
+        <img src="ımg/WhatsApp Image 2026-02-06 at 08.35.54 (1).jpeg" alt="YuppiLand">
+    </div>
+</div>
+
+<div class="content">
+<h1><span>YuppiLand Əyləncə Mərkəzi</span></h1>
+
+<div class="rating-container">
+    <div class="rating" id="stars"></div>
+    <div id="ratingText">Ortalama: 4.8 ⭐ (Rəy sayı: 280)</div>
+
+    <div class="review-box" id="reviewBox">
+        <span id="closeReview">✖</span>
+        <form id="reviewForm">
+            <input type="text" id="nameInput" name="name" placeholder="Adınız" required>
+            <textarea id="commentInput" name="comment" placeholder="Rəyinizi yazın..." required></textarea>
+            <input type="hidden" id="ulduzInput" name="ulduz">
+            <button type="submit">Göndər</button>
+        </form>
+    </div>
+    <div id="message"></div>
+</div>
+
+<!-- MENYUYA KEÇİD -->
+<div class="menu-card" onclick="window.location.href='index(1).html'">
+    <span>📖 Menyuya baxın</span><span>›</span>
+</div>
+
+<div class="opening-hours">
+    <strong>Açılış Saatları:</strong><br>
+    Hər gün: 11:00 – 22:00
+</div>
+
+<div class="kids-info">
+    <h2>🎉 Uşaqlar üçün Əyləncə Mərkəzi</h2>
+    <p>YuppiLand-də uşaqlar üçün müxtəlif fəaliyyətlər mövcuddur:</p>
+    <ul>
+        <li>🎈 Balon oyunları</li>
+        <li>🖌️ Rəngləmə və yaradıcılıq küncü</li>
+        <li>🧩 Mini tapmacalar və oyunlar</li>
+        <li>🎵 Musiqi və ritm fəaliyyətləri</li>
+        <li>🤹‍♂️ Aktiv oyun sahəsi</li>
+    </ul>
+    <p>Uşaqlar üçün təhlükəsiz və əyləncəli mühit!</p>
+</div>
+
+<div class="footer">
+<div>Məkan — Binə atçılıq mərkəzinin yaxınlığı</div>
+<div class="social-buttons">
+    <a href="https://www.tiktok.com/@yuppiland.az/photo/7568465433993448726?_r=1&_t=ZN-93gyoVgwJM6" target="_blank" class="social-btn"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/yuppiland.az?igsh=cWx6MnNnNjBwb2Qy&utm_source=qr" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/994997767610" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+</div>
+<div class="lang-text" id="langText"></div>
+</div>
+
+<script>
+/* THEME TOGGLE */
+const toggle = document.getElementById("themeToggle");
+const body = document.body;
+if(localStorage.getItem("theme")==="dark"){body.classList.add("dark");body.classList.remove("light");}else{body.classList.add("light");body.classList.remove("dark");}
+toggle.onclick = () => {body.classList.toggle("dark");body.classList.toggle("light");localStorage.setItem("theme",body.classList.contains("dark")?"dark":"light");};
+
+/* LOCAL STORAGE REY */
+let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+let count = 280;
+const starBox=document.getElementById("stars");
+const ratingText=document.getElementById("ratingText");
+const reviewBox=document.getElementById("reviewBox");
+const ulduzInput=document.getElementById("ulduzInput");
+const reviewForm=document.getElementById("reviewForm");
+const message=document.getElementById("message");
+const closeReview=document.getElementById("closeReview");
+let selected=0;
+
+/* Draw stars */
+function drawStars(){
+    starBox.innerHTML="";
+    for(let i=1;i<=5;i++){
+        let s=document.createElement("span");
+        s.innerText="★";
+        s.className="star active";
+        s.onclick=()=>openReviewForm(i);
+        starBox.appendChild(s);
+    }
+}
+drawStars();
+
+/* Update rey sayı */
+function updateCount(){
+    ratingText.innerText="Ortalama: 4.8 ⭐ (Rəy sayı: "+(count+reviews.length)+")";
+}
+updateCount();
+
+/* Open form */
+function openReviewForm(val){
+    selected=val;
+    ulduzInput.value=val;
+    reviewBox.classList.add("show");
+}
+
+/* Close form */
+closeReview.onclick = () => {
+    reviewBox.classList.remove("show");
+};
+
+/* Form submit */
+reviewForm.addEventListener("submit",function(e){
+    e.preventDefault();
+    const name = document.getElementById("nameInput").value.trim();
+    const comment = document.getElementById("commentInput").value.trim();
+    const star = parseInt(ulduzInput.value);
+    if(!name || !comment) return;
+
+    fetch("https://formspree.io/f/xreazwnl",{
+        method:"POST",
+        body: new FormData(reviewForm),
+        headers: {"Accept": "application/json"}
+    });
+
+    reviews.push(star);
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+
+    message.innerText="Rəyiniz üçün təşəkkür edirik 💙";
+    reviewBox.classList.remove("show");
+    reviewForm.reset();
+    updateCount();
+});
+
+/* LANG BUTTON */
+const langBtn = document.getElementById("langBtn");
+const langText = document.getElementById("langText");
+langBtn.onclick = () => {
+    langText.style.display = langText.style.display==="block"?"none":"block";
+};
+</script>
+</body>
+</html>
