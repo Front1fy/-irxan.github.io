@@ -9,7 +9,34 @@
 
 <style>
 *{box-sizing:border-box;}
-body{margin:0;font-family:Arial,sans-serif;background:#f4fbff;color:#222;transition:.3s;}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+color:#222;
+transition:.3s;
+
+/* ARXA PLAN ŞƏKİL */
+background-image:url("img/background.jpg");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+/* light mode */
+body.light{
+background-image:url("img/background.jpg");
+color:#222;
+}
+
+/* dark mode */
+body.dark{
+background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+url("img/background.jpg");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+color:#fff;
+}
 body.light{background:#f4fbff;color:#222;}
 body.dark{background:linear-gradient(135deg,#0a1a3b,#13264f,#1b3270,#1b3270);color:#fff;}
 
