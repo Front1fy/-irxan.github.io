@@ -120,17 +120,132 @@ cursor:pointer;
 .content{text-align:center;padding:15px;}
 h1{font-size:22px;margin:10px 0;}
 
-/* MENU */
 .menu-card{
-background:#2fa4aa;
+background:linear-gradient(135deg,#2fa4aa,#1f7f85);
 color:#fff;
 max-width:360px;
 margin:20px auto;
-padding:18px;
-border-radius:12px;
+padding:18px 22px;
+border-radius:18px;
 display:flex;
 justify-content:space-between;
+align-items:center;
 cursor:pointer;
+position:relative;
+overflow:hidden;
+transition:.35s;
+box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+/* YENI ANIMASIYA */
+animation:floatCard 3s ease-in-out infinite;
+}
+
+/* YUXARI-ASAGI HEREKET */
+@keyframes floatCard{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-8px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+/* HOVER */
+.menu-card:hover{
+transform:scale(1.03);
+box-shadow:
+0 0 15px rgba(255,255,255,.35),
+0 0 30px rgba(47,164,170,.5),
+0 0 45px rgba(47,164,170,.4);
+}
+
+/* CLICK */
+.menu-card:active{
+transform:scale(.96);
+}
+
+/* SWEEP */
+.menu-card::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:70%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.55),
+transparent
+);
+transform:skewX(-25deg);
+animation:sweep 3s linear infinite;
+}
+
+@keyframes sweep{
+0%{
+left:-120%;
+}
+100%{
+left:140%;
+}
+}
+
+/* PULSE EFFEKT */
+.menu-card::after{
+content:"";
+position:absolute;
+inset:0;
+border-radius:18px;
+border:2px solid rgba(255,255,255,.15);
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{
+opacity:.2;
+transform:scale(1);
+}
+50%{
+opacity:.6;
+transform:scale(1.02);
+}
+100%{
+opacity:.2;
+transform:scale(1);
+}
+}
+
+/* INSTAGRAM */
+.instagram{
+background:linear-gradient(
+135deg,
+#833ab4,
+#fd1d1d,
+#fcb045
+);
+}
+
+/* TIKTOK */
+.tiktok{
+background:linear-gradient(
+135deg,
+#111,
+#25F4EE,
+#FE2C55
+);
+}
+
+/* MENU */
+#menuText{
+background:linear-gradient(
+135deg,
+#0093E9,
+#2fa4aa
+);
 }
 
 /* RATING */
