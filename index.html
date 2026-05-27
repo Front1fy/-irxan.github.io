@@ -249,7 +249,53 @@ background:linear-gradient(
 }
 
 /* RATING */
-.star{font-size:40px;color:#ffc107;cursor:pointer;}
+.star{
+font-size:40px;
+cursor:pointer;
+display:inline-block;
+margin:0 4px;
+color:#ffd700;
+
+/* ANIMASIYA */
+animation:blinkStar 1.5s infinite ease-in-out;
+}
+
+/* HER ULDUZ FƏRQLİ VAXTDA */
+.star:nth-child(1){animation-delay:0s;}
+.star:nth-child(2){animation-delay:.3s;}
+.star:nth-child(3){animation-delay:.6s;}
+.star:nth-child(4){animation-delay:.9s;}
+.star:nth-child(5){animation-delay:1.2s;}
+
+/* YANIB-SÖNMƏ */
+@keyframes blinkStar{
+
+0%{
+opacity:.3;
+transform:scale(.9);
+text-shadow:
+0 0 5px #ffd700,
+0 0 10px #ffcc00;
+}
+
+50%{
+opacity:1;
+transform:scale(1.2);
+text-shadow:
+0 0 10px #fff,
+0 0 20px #ffd700,
+0 0 40px #ffae00,
+0 0 60px #ffae00;
+}
+
+100%{
+opacity:.3;
+transform:scale(.9);
+text-shadow:
+0 0 5px #ffd700,
+0 0 10px #ffcc00;
+}
+}
 .review-box{display:none;max-width:360px;margin:10px auto;background:#fff;color:#000;padding:15px;border-radius:10px;}
 .review-box.show{display:block;}
 
